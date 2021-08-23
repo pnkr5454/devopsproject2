@@ -21,6 +21,13 @@ pipeline{
                 sh "docker build . -t pnkr5454/myapp01:${DOCKER_TAG}"
             }
         }
+            steps{
+                withCredentials([string(credentialsId: 'docker_pswd', variable: 'dockerpassword')]) {
+                 sh "docker login -u pnkr5454 -p ${dockerpassword}"
+                 sh "docker push pnkr5454/myapp01:${DOCKER_TAG} "
+                }
+            }
+        }
     }
 }
 def dockerid(){
