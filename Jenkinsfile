@@ -18,7 +18,7 @@ pipeline{
         }
         stage("build the image using dockerfile"){
             steps{
-                sh "docker build . -t pnkr5454/myapp01:{DOCKER_TAG}"
+                sh "docker build -t pnkr5454/myapp01:{DOCKER_TAG}."
             }
         }
     }
