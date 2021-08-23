@@ -3,7 +3,7 @@ pipeline{
     environment {
     def mvnHome = tool name: 'Maven3', type: 'maven'
     def mvnCMD = "${mvnHome}/bin/mvn"
-    def DOCKER_TAG = "${getLatestCommitId()}"
+    def DOCKER_TAG = "${dockerid()}"
     }
     stages{
         stage("checkout the code from github"){
