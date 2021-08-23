@@ -24,7 +24,7 @@ pipeline{
         stage("push the image to dockerhub"){
             steps{
                 withCredentials([string(credentialsId: 'dockerpwd', variable: 'dockerpwds')]) {
-                 sh "docker login -u pnkr5454 -p ${dockerpassword}"
+                 sh "docker login -u pnkr5454 -p ${dockerpwds}"
                  sh "docker push pnkr5454/myapp01:${DOCKER_TAG} "
                 }
             }
