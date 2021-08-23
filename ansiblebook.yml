@@ -27,6 +27,7 @@
         published_ports:
           - 0.0.0.0:9090:8080
           - name: Remove a volume
+    - name: create the volume   
       docker_volume:
         name: volume_one
         state: present  
