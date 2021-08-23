@@ -8,7 +8,7 @@
         state: present
     - name: install the python py module
       pip:
-        name: python-py
+        name: docker-py
         state: present
     - name: install the docker
       yum:
@@ -25,12 +25,12 @@
         image: "pnkr5454/myapp01:{{DOCKER_TAG}}"
         state: started
         published_ports:
-          - 0.0.0.0:9090:8080 
-      docker_volume:
-        name: volume_one
-        state: present    
+          - 0.0.0.0:9090:8080  
     - name: discard the docker images 
       command: docker image prune -a -f --filter 'label=app=my-app' 
-      ignore_errors: yes 
+      ignore_errors: yes
+
+
+
 
 
