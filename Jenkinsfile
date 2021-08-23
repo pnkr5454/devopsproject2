@@ -28,7 +28,13 @@ pipeline{
                  sh "docker push pnkr5454/myapp01:${DOCKER_TAG} "    
                 }
             }
-
+        }
+        stage("deploy using ansible"){
+            steps{
+                ansiblePlaybook credentialsId: 'deployservers', disableHostKeyChecking: true, 
+                extras: "-e DOCKER_TAG=${DOCKER_TAG}", installation: 'ansible2', 
+                inventory: 'dev.inv', playbook: 'ansiblebook.yml'
+            }
         }
     }
 }
