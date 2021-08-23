@@ -16,6 +16,11 @@ pipeline{
                 sh "${mvnCMD} clean package"
             }
         }
+        stage("build the image using dockerfile"){
+            steps{
+                sh "docker build . -t pnkr5454/myapp01:{DOCKER_TAG}"
+            }
+        }
     }
 }
 def dockerid(){
